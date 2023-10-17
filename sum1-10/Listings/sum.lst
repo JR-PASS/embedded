@@ -1,0 +1,80 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Reset,DATA,READONLY ;ResetÎªÄ¬È
+                                                            ÏµÄÈë¿ÚµØÖ·
+    2 00000000 12345678        DCD              0X12345678  ;³ÌÐò´Ó0x80000000¿ª
+                                                            Ê¼ÔËÐÐ£¬
+    3 00000004         ;¶øÏµÍ³½«Ö®ºóËÄ¸ö×Ö½ÚÄÚÈÝ·Ö¸øÁË¶ÑÕ»Ö¸Õë
+    4 00000004         ;ËùÒÔ¶¨Òå0x12345678·½±ã¹Û²ì
+    5 00000004 00000000        DCD              Reset_Handler ;¶¨ÒåÒ»¸ö±êºÅ£¬×÷
+                                                            ÎªºóÃæµÄÊä³ö
+    6 00000008                 AREA             CODE_SEGMET,CODE,READONLY
+    7 00000000                 ENTRY
+    8 00000000         Reset_Handler
+                               proc
+    9 00000000                 export           Reset_Handler    [weak]
+   10 00000000 F04F 0000       MOV              R0,#0       ;×îÖÕ½á¹û±£´æµ½R0
+   11 00000004 F04F 010A       MOV              R1,#10      ;R1´Ó10È¡µ½0
+   12 00000008         start
+   13 00000008 4408            ADD              R0,R0,R1
+   14 0000000A 1E49            SUBS             R1,R1,#1
+   15 0000000C D1FC            BNE              start       ;Èç¹ûR1²»Îª0Ôò¼ÌÐø¼
+                                                            Ó
+   16 0000000E                 ENDP
+   17 0000000E                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=.\objects\sum.d -o.\objects\sum.o -IE:\Keil_packs\TexasInstr
+uments\MSP432P4xx_DFP\3.2.6\Device\Include --predefine="__UVISION_VERSION SETA 
+537" --predefine="__MSP432P401R__ SETA 1" --list=.\listings\sum.lst sum.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset 00000000
+
+Symbol: Reset
+   Definitions
+      At line 1 in file sum.s
+   Uses
+      None
+Comment: Reset unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+CODE_SEGMET 00000000
+
+Symbol: CODE_SEGMET
+   Definitions
+      At line 6 in file sum.s
+   Uses
+      None
+Comment: CODE_SEGMET unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 8 in file sum.s
+   Uses
+      At line 5 in file sum.s
+      At line 9 in file sum.s
+
+start 00000008
+
+Symbol: start
+   Definitions
+      At line 12 in file sum.s
+   Uses
+      At line 15 in file sum.s
+Comment: start used once
+3 symbols
+337 symbols in table
